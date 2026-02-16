@@ -48,7 +48,7 @@ ZIP 内のディレクトリ構成:
 ## ファイル構成
 
 ```
-site-saver-extension/
+repo root/
   ├─ manifest.json     … 拡張定義
   ├─ shared.js         … sw.js / popup.js / offscreen.js 共通ユーティリティ
   ├─ sw.js             … Service Worker（メインロジック）
