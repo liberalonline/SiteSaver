@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Site Saver</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: rgba(255, 255, 255, 0.08);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.7);
+      --line: rgba(255, 255, 255, 0.14);
+      --accent: #38bdf8;
+      --danger: #fb7185;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1200px 400px at 20% 0%,
+          rgba(56, 189, 248, 0.22),
+          transparent 60%),
+        radial-gradient(900px 450px at 90% 30%,
+          rgba(251, 113, 133, 0.16),
+          transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font: 13px/1.35 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    }
+
+    .wrap {
+      width: 340px;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 2px;
+    }
+
+    .row+.row {
+      border-top: 1px dashed rgba(255, 255, 255, 0.12);
+    }
+
+    .title {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      margin: 0 0 8px 0;
+    }
+
+    label {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--text);
+    }
+
+    input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--accent);
+    }
+
+    .hint {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .btns {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button.primary {
+      border-color: rgba(56, 189, 248, 0.5);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: pre-wrap;
+    }
+
+    .status.error {
+      color: rgba(251, 113, 133, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="title">Site Saver</div>
+      <div class="row">
+        <label>
+          <input id="includeResources" type="checkbox" checked />
+          ページの実ファイル(JS/CSS/画像)も保存
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <input id="includeNetworkLog" type="checkbox" checked />
+          ネットワーク記録(performance)を保存
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <input id="includeHar" type="checkbox" checked />
+          HARを保存
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <input id="useDebuggerCapture" type="checkbox" />
+          debuggerで高精度キャプチャ(再読み込み)
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <input id="sameOriginOnly" type="checkbox" checked />
+          同一オリジンのみ
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <input id="includeCookies" type="checkbox" />
+          CookieをJSONで保存(要許可)
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <input id="includeStorage" type="checkbox" checked />
+          local/sessionStorageをJSONで保存
+        </label>
+      </div>
+
+      <div class="btns">
+        <button id="saveBtn" class="primary">このタブを保存</button>
+        <button id="openDownloadsBtn">Downloads</button>
+      </div>
+      <div class="hint">
+        常にZIP 1ファイルで保存します。保存先はDownloads直下の <code>&lt;domain&gt;_&lt;timestamp&gt;.zip</code> です。
+      </div>
+      <div id="status" class="status"></div>
+    </div>
+  </div>
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+
+</html>

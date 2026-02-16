@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "SiteSaver",
+  "version": "1.0.0",
+  "description": "Save current page HTML + loaded resources + cookies/storage into your Downloads folder.",
+  "action": {
+    "default_title": "SiteSaver",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "sw.js"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage",
+    "offscreen",
+    "debugger"
+  ],
+  "optional_permissions": [
+    "cookies"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
