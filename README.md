@@ -3,6 +3,8 @@
 今開いているタブのページを ZIP 1ファイルにまとめて Downloads に保存する Chrome 拡張（Manifest V3）。
 ネットワーク記録やHAR、ストレージ情報なども保存可能な、主に解析用での目的を想定。
 
+https://chromewebstore.google.com/detail/sitesaver/kpdnopeigbkmfmldnpcdipdfnchnkakm
+
 
 ## できること
 
@@ -40,6 +42,10 @@ ZIP 内のディレクトリ構成:
 
 ## インストール
 
+以下からchromeにインストールしてください。
+https://chromewebstore.google.com/detail/sitesaver/kpdnopeigbkmfmldnpcdipdfnchnkakm
+
+### ソースからインストール
 1. Chrome で `chrome://extensions/` を開く
 2. 右上の「デベロッパーモード」を ON
 3. 「パッケージ化されていない拡張機能を読み込む」→ このフォルダを選択
@@ -66,7 +72,6 @@ repo root/
 | `activeTab` | 必須 | 現在のタブにスクリプト注入 |
 | `scripting` | 必須 | `chrome.scripting.executeScript` |
 | `downloads` | 必須 | ZIP ファイルの保存 |
-| `storage` | 必須 | （将来のオプション永続化用） |
 | `offscreen` | 必須 | Blob URL 生成・ZIP 構築 |
 | `debugger` | 必須 | HAR 高精度キャプチャ |
 | `cookies` | オプション | Cookie 取得（UI でオン時にリクエスト） |
